@@ -15,6 +15,15 @@ function Header() {
     if (inputRef.current?.value) {
       inputRef.current.value = "";
     }
+
+    try {
+      // Call our API to activate the Scraper...
+      // /api/activateScraper
+    } catch (error) {
+      // Handle any errors
+    }
+
+    // Wait for the response to come back
   };
 
   return (
