@@ -1,5 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
+import { adminDb } from "../../firebaseAdmin";
+import admin from "firebase-admin";
 
 type Data = {
   collection_id: string;
@@ -35,6 +37,13 @@ export default async function handler(
   console.log("DATA IS >>>", data);
 
   const { collection_id, start_eta } = data;
+
+  await adminDb.collection("searches").doc(collection_id).set({
+    search,
+    start_eta,
+    status: "pending",
+    updatedAt: admin.firestore.Timestamp.now(),
+  });
 
   res.status(200).json({
     collection_id: "1234",
