@@ -1,6 +1,7 @@
 import { db } from "../../../firebase";
 import { doc } from "firebase/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
+import Results from "../../../components/Results";
 
 type Props = {
   params: {
